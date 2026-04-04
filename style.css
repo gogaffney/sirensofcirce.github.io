@@ -1,0 +1,270 @@
+/* =========================
+   🌊 ROOT VARIABLES
+========================= */
+:root {
+  --deep-ocean: #0B1D2A;
+  --teal: #1CA7A6;
+  --seafoam: #A8E6CF;
+  --pearl: #F4F7F6;
+  --accent-gradient: linear-gradient(135deg, #6a5acd, #1CA7A6, #A8E6CF);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+
+  --transition: all 0.3s ease;
+}
+
+/* =========================
+   🌊 GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--deep-ocean);
+  color: var(--pearl);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================
+   🌊 TYPOGRAPHY
+========================= */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  opacity: 0.9;
+}
+
+/* =========================
+   🌊 NAVIGATION
+========================= */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(11, 29, 42, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-size: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--pearl);
+  transition: var(--transition);
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--seafoam);
+  bottom: -5px;
+  left: 0;
+  transition: var(--transition);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   🌊 HERO SECTION
+========================= */
+.hero {
+  height: 100vh;
+  background: radial-gradient(circle at top, rgba(28,167,166,0.2), transparent),
+              url('YOUR-OCEAN-IMAGE.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   🌊 BUTTONS
+========================= */
+button {
+  background: var(--accent-gradient);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   🌊 SECTIONS
+========================= */
+.section {
+  padding: 100px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* =========================
+   🐚 ABOUT PAGE
+========================= */
+.about-container {
+  display: grid;
+  gap: 40px;
+}
+
+.bio-card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+  animation: float 6s ease-in-out infinite;
+}
+
+.bio-card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   🎶 MUSIC PAGE
+========================= */
+.track {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  transition: var(--transition);
+}
+
+.track:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+audio {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* =========================
+   📅 EVENTS PAGE
+========================= */
+.event {
+  border-left: 3px solid var(--seafoam);
+  padding-left: 20px;
+  margin: 30px 0;
+  position: relative;
+}
+
+.event::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--seafoam);
+  border-radius: 50%;
+  position: absolute;
+  left: -7px;
+  top: 5px;
+}
+
+/* =========================
+   ✉️ CONTACT PAGE
+========================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+/* =========================
+   🌊 FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: rgba(0,0,0,0.3);
+  margin-top: 50px;
+}
+
+/* =========================
+   🌊 ANIMATIONS
+========================= */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================
+   📱 RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
