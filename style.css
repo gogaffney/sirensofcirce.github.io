@@ -1,5 +1,5 @@
 /* =========================
-   🌊 ROOT VARIABLES
+   ROOT VARIABLES
 ========================= */
 :root {
   --deep-ocean: #0B1D2A;
@@ -15,12 +15,16 @@
 }
 
 /* =========================
-   🌊 GLOBAL RESET
+   GLOBAL RESET
 ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,7 +36,7 @@ body {
 }
 
 /* =========================
-   🌊 TYPOGRAPHY
+   TYPOGRAPHY
 ========================= */
 h1, h2, h3 {
   font-family: var(--font-heading);
@@ -47,10 +51,11 @@ h2 {
 
 p {
   opacity: 0.9;
+  margin-bottom: 20px;
 }
 
 /* =========================
-   🌊 NAVIGATION
+   NAVIGATION
 ========================= */
 nav {
   position: fixed;
@@ -63,6 +68,19 @@ nav {
   align-items: center;
   padding: 20px 40px;
   z-index: 1000;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  display: block;
+  border-radius: 8px;
 }
 
 nav h1 {
@@ -98,16 +116,32 @@ nav a:hover::after {
 }
 
 /* =========================
-   🌊 HERO SECTION
+   HERO SECTION
 ========================= */
 .hero {
+  position: relative;
   height: 100vh;
-  background: radial-gradient(circle at top, rgba(28,167,166,0.2), transparent),
-              url('YOUR-OCEAN-IMAGE.jpg') center/cover no-repeat;
+  background:
+    radial-gradient(circle at top, rgba(28,167,166,0.2), transparent),
+    url('PASTE-YOUR-HERO-IMAGE-URL-HERE') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 20px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
   padding: 20px;
 }
 
@@ -116,9 +150,29 @@ nav a:hover::after {
   margin-bottom: 20px;
 }
 
+.hero p {
+  font-size: 1.15rem;
+  margin-bottom: 25px;
+}
+
 /* =========================
-   🌊 BUTTONS
+   BUTTONS
 ========================= */
+.button-link {
+  display: inline-block;
+  background: var(--accent-gradient);
+  padding: 12px 25px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.button-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
 button {
   background: var(--accent-gradient);
   border: none;
@@ -127,6 +181,7 @@ button {
   color: white;
   cursor: pointer;
   transition: var(--transition);
+  font-family: var(--font-body);
 }
 
 button:hover {
@@ -135,83 +190,60 @@ button:hover {
 }
 
 /* =========================
-   🌊 SECTIONS
+   SECTIONS
 ========================= */
 .section {
   padding: 100px 20px;
   max-width: 1100px;
   margin: auto;
+  scroll-margin-top: 100px;
 }
 
 /* =========================
-   🐚 ABOUT PAGE
+   MUSIC
 ========================= */
-.about-container {
-  display: grid;
-  gap: 40px;
-}
-
-.bio-card {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  transition: var(--transition);
-  animation: float 6s ease-in-out infinite;
-}
-
-.bio-card:hover {
-  transform: translateY(-5px);
-}
-
-/* =========================
-   🎶 MUSIC PAGE
-========================= */
-.track {
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.05);
-  transition: var(--transition);
-}
-
-.track:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-audio {
-  width: 100%;
-  margin-top: 10px;
-}
-
-/* =========================
-   📅 EVENTS PAGE
-========================= */
-.event {
-  border-left: 3px solid var(--seafoam);
-  padding-left: 20px;
-  margin: 30px 0;
+.video-wrapper {
   position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 16px;
 }
 
-.event::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background: var(--seafoam);
-  border-radius: 50%;
+.video-wrapper iframe {
   position: absolute;
-  left: -7px;
-  top: 5px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* =========================
-   ✉️ CONTACT PAGE
+   SHOWS
+========================= */
+.shows-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.shows-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(244, 247, 246, 0.2);
+  font-size: 1.05rem;
+}
+
+/* =========================
+   CONTACT
 ========================= */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 input, textarea {
@@ -221,14 +253,25 @@ input, textarea {
   outline: none;
   background: rgba(255,255,255,0.1);
   color: white;
+  font-family: var(--font-body);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255,255,255,0.7);
 }
 
 textarea {
   min-height: 120px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  align-self: flex-start;
 }
 
 /* =========================
-   🌊 FOOTER
+   FOOTER
 ========================= */
 footer {
   text-align: center;
@@ -238,21 +281,18 @@ footer {
 }
 
 /* =========================
-   🌊 ANIMATIONS
-========================= */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-/* =========================
-   📱 RESPONSIVE DESIGN
+   RESPONSIVE DESIGN
 ========================= */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
     gap: 10px;
+    padding: 15px 20px;
+  }
+
+  .nav-left {
+    flex-direction: column;
+    gap: 8px;
   }
 
   nav ul {
@@ -266,5 +306,9 @@ footer {
 
   h2 {
     font-size: 2rem;
+  }
+
+  .logo {
+    height: 42px;
   }
 }
