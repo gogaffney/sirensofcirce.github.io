@@ -1,29 +1,40 @@
-.hero {
-  position: relative;
-  height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(28,167,166,0.2), transparent),
-    url('https://i.imgur.com/MDPE9yR.jpeg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+  --deep-ocean: #0B1D2A;
+  --teal: #1CA7A6;
+  --seafoam: #A8E6CF;
+  --pearl: #F4F7F6;
+  --accent-gradient: linear-gradient(135deg, #6a5acd, #1CA7A6, #A8E6CF);
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+
+  --transition: all 0.3s ease;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  padding: 20px;
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+  background-color: var(--deep-ocean);
+  color: var(--pearl);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
 /* =========================
    TYPOGRAPHY
 ========================= */
@@ -112,7 +123,7 @@ nav a:hover::after {
   height: 100vh;
   background:
     radial-gradient(circle at top, rgba(28,167,166,0.2), transparent),
-    url('PASTE-YOUR-HERO-IMAGE-URL-HERE') center/cover no-repeat;
+    url('https://i.imgur.com/MDPE9yR.jpeg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
